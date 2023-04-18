@@ -1,0 +1,31 @@
+// Defining common media queries for responsive breakpoints.
+
+@mixin media-query-phone-sm() {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+@mixin media-query-phone-md() {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin media-query-tablet() {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin media-query-laptop() {
+  @media (min-width: 901px) {
+    @content;
+  }
+}
+
+@mixin media-query-desktop() {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
