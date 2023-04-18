@@ -2,7 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import cx from "classnames";
 import style from "./scroll.module.scss";
 
-export function ScrollAffordance(): JSX.Element {
+interface ScrollAffordanceProps {
+  className?: string;
+}
+
+export function ScrollAffordance(props: ScrollAffordanceProps): JSX.Element {
+  const { className } = props;
   const lineRef = useRef<HTMLDivElement>(null);
   // State used to reapply the animation class, which will restart the jumping letters animation.
   const [restartAnimation, setRestartAnimation] = useState(true);
@@ -39,7 +44,7 @@ export function ScrollAffordance(): JSX.Element {
   }, []);
 
   return (
-    <div className={style.container}>
+    <div className={cx(style.container, className)}>
       <p
         className={cx(style.scrollText, { [style.jumping]: restartAnimation })}
       >
