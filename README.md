@@ -1,3 +1,12 @@
+## chrisnivera.com - v2
+
+This is the second iteration of my personal portfolio, built using React + Next.js.
+
+Previous iteration: [v1](https://github.com/sunfestlabs/chrisnivera.com)
+
+## 
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
