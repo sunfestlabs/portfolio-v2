@@ -1,0 +1,12 @@
+@import "@/styles/layout.scss";
+
+.divider {
+  width: 56px;
+  height: 4px;
+  background: var(--color-text-accent);
+  border-radius: 2px;
+
+  @include media-query-desktop() {
+    width: 80px;
+  }
+}
