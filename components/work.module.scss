@@ -1,0 +1,64 @@
+@import "@/styles/layout.scss";
+
+.workContainer {
+  width: 100%;
+}
+
+.selectorContainer {
+  width: 100%;
+  overflow: auto;
+}
+.workSelector {
+  --tab-height: 42px;
+  --tab-width: 160px;
+
+  width: max-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  border-bottom: 2px solid var(--color-subtitle);
+
+  @include media-query-desktop() {
+    flex-direction: column;
+    border-left: 2px solid var(--color-subtitle);
+    border-bottom: 0;
+  }
+
+  .company {
+    cursor: pointer;
+    padding-left: 12px;
+    transition: background-color 0.25s ease-in-out;
+    width: var(--tab-width);
+    height: var(--tab-height);
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      background-color: var(--color-box-shadow);
+      color: var(--color-cta);
+    }
+  }
+
+  .highlight {
+    position: absolute;
+    top: var(--tab-height);
+    left: 0;
+    width: var(--tab-width);
+    height: 2px;
+    background: var(--color-cta);
+    transform: translateX(calc(var(--active-company-idx) * var(--tab-width)));
+    transition: transform 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition-delay: 0.2s;
+
+    @include media-query-desktop() {
+      top: 0;
+      left: -2px;
+      width: 2px;
+      height: var(--tab-height);
+      transform: translateY(
+        calc(var(--active-company-idx) * var(--tab-height))
+      );
+    }
+  }
+}
