@@ -1,0 +1,73 @@
+@import "@/styles/layout.scss";
+
+.heroContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  @include media-query-desktop() {
+    flex-direction: row;
+    gap: 64px;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: var(--color-text);
+
+    .greeting {
+      font-size: 20px;
+
+      @include media-query-desktop() {
+        font-size: 28px;
+      }
+    }
+
+    .name,
+    .subtitle {
+      font-size: 48px;
+      line-height: 56px;
+      font-weight: 700;
+
+      @include media-query-desktop() {
+        font-size: 56px;
+        line-height: 64px;
+      }
+    }
+
+    .punctuation {
+      color: var(--color-text-accent);
+    }
+
+    .subtitle {
+      font-weight: 600;
+      opacity: 0.6;
+    }
+
+    .description {
+      width: 75%;
+      opacity: 0.6;
+      font-size: 24px;
+    }
+  }
+
+  .portrait {
+    .image {
+      width: 360px;
+      height: auto;
+      border-radius: 8px;
+
+      // create a box shadow to the bottom right
+      box-shadow: 15px 15px 0 var(--color-box-shadow);
+      transition: box-shadow 0.3s ease-in-out;
+
+      // when hovering, make the box shadow change color and position closer
+      &:hover {
+        box-shadow: 5px 5px 0 var(--color-box-shadow-secondary);
+      }
+    }
+  }
+}
