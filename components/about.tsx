@@ -1,13 +1,13 @@
+import { Bitter, Roboto_Mono } from "next/font/google";
+import { Divider } from "./design-system/divider";
+import { ScrollAffordance } from "./scroll";
+import { SectionTitle } from "./design-system/section-title";
+import { VStack } from "./design-system/stack";
+import Image from "next/image";
+import Spacer from "./design-system/spacer";
+import avatar from "@/public/avatar.gif";
 import cx from "classnames";
 import style from "./about.module.scss";
-import { Bitter, Roboto_Mono } from "next/font/google";
-import { VStack } from "./design-system/stack";
-import avatar from "@/public/avatar.gif";
-import Image from "next/image";
-import { ScrollAffordance } from "./scroll";
-import Spacer from "./design-system/spacer";
-import { Divider } from "./design-system/divider";
-import { SectionTitle } from "./design-system/section-title";
 
 const bitter = Bitter({ subsets: ["latin"] });
 const robotoMono = Roboto_Mono({ subsets: ["latin"] });

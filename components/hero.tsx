@@ -1,8 +1,8 @@
-import cx from "classnames";
-import style from "./hero.module.scss";
 import { Bitter } from "next/font/google";
-import portrait from "@/public/portrait.png";
 import Image from "next/image";
+import cx from "classnames";
+import portrait from "@/public/portrait.png";
+import style from "./hero.module.scss";
 
 const bitter = Bitter({ subsets: ["latin"] });
 
