@@ -33,11 +33,11 @@ export function ScrollAffordance(props: ScrollAffordanceProps): JSX.Element {
     };
   }, []);
 
-  // Apply the jumping animation to the text every 5 seconds.
+  // Apply the jumping animation to the text every 4 seconds.
   useEffect((): (() => void) => {
     const interval = setInterval((): void => {
       setRestartAnimation((prev) => !prev);
-    }, 5000);
+    }, 3000);
     return (): void => {
       clearInterval(interval);
     };
