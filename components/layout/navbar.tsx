@@ -1,4 +1,5 @@
 import { Bitter, Roboto_Mono } from "next/font/google";
+import { Button } from "../design-system/button";
 import { HStack } from "../design-system/stack";
 import { useEffect, useRef, useState } from "react";
 import cx from "classnames";
@@ -90,6 +91,9 @@ export function Navbar(): JSX.Element {
           onClick={(e): void => scrollToSection(e, "contact")}
         >
           Contact
+        </a>
+        <a href="/ChrisNiveraCVResume.pdf" className={style.link}>
+          Resume
         </a>
       </div>
     </HStack>
