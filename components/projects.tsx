@@ -54,7 +54,7 @@ function Project(props: { project: ProjectData }): JSX.Element {
         src={project.thumbnail}
         alt={project.name}
         className={style.thumbnail}
-        width={365}
+        width={385}
         height={235}
       />
       <VStack className={style.info}>
@@ -62,7 +62,7 @@ function Project(props: { project: ProjectData }): JSX.Element {
         <Spacer axis="vertical" size={24} />
         <div className={style.snippet}>{project.snippet}</div>
         <Spacer axis="vertical" size={36} />
-        <a href={project.url} className={style.cta}>
+        <a href={project.url} target="_blank" className={style.cta}>
           <Button>Learn more</Button>
         </a>
         <Spacer axis="vertical" size={24} />
