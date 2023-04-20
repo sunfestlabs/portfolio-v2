@@ -1,22 +1,64 @@
+@import "@/styles/layout.scss";
+
 .navbar {
   --navbar-height: 64px;
+  --padding-h: 64px;
+  --padding-v: 24px;
   position: fixed;
-  top: calc(0px - var(--navbar-height));
+  top: calc(0px - var(--navbar-height) - var(--padding-v));
   z-index: 1;
-  transition: top 0.2s ease-in-out, padding 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   width: 100%;
-  height: var(--navbar-height);
   background-color: var(--color-background-base);
-  // Extra top padding if the navbar is at the top of the page
-  padding-top: 24px;
+  padding: var(--padding-v) var(--padding-h);
+  justify-content: space-between;
 
   &.visible {
     top: 0px;
   }
 
   &.shadow {
-    // Shadow only appears if the user is scrolled. If so, remove the top padding
-    padding-top: 0px;
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  }
+
+  .logo {
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  .desktopLinks {
+    display: none;
+    align-items: center;
+    gap: 32px;
+
+    .link {
+      position: relative;
+      font-size: 18px;
+
+      // underline element that shows on hover
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: -6px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--color-cta);
+        transition: width 0.3s ease-in-out;
+      }
+
+      &:hover {
+        color: var(--color-cta);
+      }
+
+      &:hover::before {
+        width: 100%;
+      }
+    }
+
+    @include media-query-desktop() {
+      display: flex;
+    }
   }
 }

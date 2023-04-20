@@ -1,4 +1,4 @@
-import { Bitter } from "next/font/google";
+import { Bitter, Roboto_Mono } from "next/font/google";
 import { HStack } from "../design-system/stack";
 import { useEffect, useRef, useState } from "react";
 import cx from "classnames";
@@ -62,7 +62,7 @@ export function Navbar(): JSX.Element {
       ref={navbarRef}
     >
       <div className={cx(bitter.className, style.logo)}>CTN</div>
-      <div className={style.desktopLinks}>
+      <div className={cx(style.desktopLinks, bitter.className)}>
         <a
           href="#about"
           className={style.link}
