@@ -3,7 +3,7 @@
 .workContainer {
   width: 100%;
   max-width: 500px;
-  min-height: 400px;
+  min-height: 450px;
 
   @include media-query-tablet() {
     max-width: 800px;
@@ -28,7 +28,7 @@
 
 .workSelector {
   --tab-height: 40px;
-  --tab-width: 160px;
+  --tab-width: 220px;
 
   width: max-content;
   display: flex;
@@ -38,7 +38,7 @@
   border-bottom: 2px solid var(--color-subtitle);
 
   @include media-query-tablet() {
-    --tab-height: 80px;
+    --tab-height: 100px;
     flex-direction: column;
     border-left: 2px solid var(--color-subtitle);
     border-bottom: 0;
@@ -52,7 +52,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 0 2px 2px 0;
+    border-radius: 4px 4px 0 0;
 
     &.active,
     &:hover {
@@ -61,8 +61,10 @@
     }
 
     @include media-query-tablet() {
+      font-size: 20px;
       padding-left: 12px;
       justify-content: flex-start;
+      border-radius: 0 4px 4px 0;
     }
   }
 
@@ -93,7 +95,7 @@
   color: var(--color-text);
   flex: 1;
   animation: pop-in 0.4s;
-  max-width: 500px;
+  max-width: 600px;
 
   .jobTitle {
     font-size: 20px;
@@ -117,15 +119,10 @@
     margin: 0;
   }
 
-  .responsibility {
-    font-size: 14px;
-    line-height: 20px;
-
-    &::before {
-      content: "\25B8";
-      margin-right: 8px;
-      color: var(--color-cta);
-    }
+  .responsibility::before {
+    content: "\25B8";
+    margin-right: 8px;
+    color: var(--color-cta);
   }
 }
 

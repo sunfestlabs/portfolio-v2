@@ -34,6 +34,7 @@ export default function Home(): JSX.Element {
         <Projects />
         <Spacer axis="vertical" size={192} />
         <ContactMe />
+        <Spacer axis="vertical" size={64} />
       </main>
     </>
   );

@@ -65,7 +65,7 @@ function Project(props: { project: ProjectData }): JSX.Element {
         <a href={project.url} target="_blank" className={style.cta}>
           <Button>Learn more</Button>
         </a>
-        <Spacer axis="vertical" size={24} />
+        <Spacer axis="vertical" size={36} />
         <HStack className={style.technologies}>
           {project.technologies.map((tech) => (
             <div
