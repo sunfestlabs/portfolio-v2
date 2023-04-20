@@ -28,7 +28,7 @@ export function Projects(): JSX.Element {
   const nlpExtension = nlpExtensionData as ProjectData;
   const stroke = strokeData as ProjectData;
   return (
-    <div className={style.projectsContainer}>
+    <div className={style.projectsContainer} id="projects">
       <SectionTitle>Personal Projects</SectionTitle>
       <Spacer axis="vertical" size={32} />
       <Divider />

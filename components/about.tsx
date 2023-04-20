@@ -18,7 +18,7 @@ export function AboutMe(): JSX.Element {
       {/* little janky, but we put the scroll affordance here so it lines up with the section title */}
       <ScrollAffordance className={style.scroll} />
       <Spacer axis="vertical" size={64} />
-      <SectionTitle>About Me</SectionTitle>
+      <SectionTitle id="about">About Me</SectionTitle>
       <Spacer axis="vertical" size={24} />
       <Divider />
       <Spacer axis="vertical" size={24} />

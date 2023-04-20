@@ -1,0 +1,22 @@
+.navbar {
+  --navbar-height: 64px;
+  position: fixed;
+  top: calc(0px - var(--navbar-height));
+  z-index: 1;
+  transition: top 0.2s ease-in-out, padding 0.2s ease-in-out;
+  width: 100%;
+  height: var(--navbar-height);
+  background-color: var(--color-background-base);
+  // Extra top padding if the navbar is at the top of the page
+  padding-top: 24px;
+
+  &.visible {
+    top: 0px;
+  }
+
+  &.shadow {
+    // Shadow only appears if the user is scrolled. If so, remove the top padding
+    padding-top: 0px;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  }
+}
