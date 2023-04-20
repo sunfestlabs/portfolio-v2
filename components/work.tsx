@@ -46,7 +46,7 @@ export function WorkHistory(): JSX.Element {
 
   return (
     <div className={style.workContainer}>
-      <SectionTitle>Work</SectionTitle>
+      <SectionTitle>Work Experience</SectionTitle>
       <Spacer axis="vertical" size={32} />
       <Divider />
       <Spacer axis="vertical" size={32} />

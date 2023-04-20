@@ -20,9 +20,7 @@ export function Hero(): JSX.Element {
           search at Neeva.
         </div>
       </div>
-      <div className={style.portrait}>
-        <Image src={portrait} alt="Portrait image" className={style.image} />
-      </div>
+      <Image src={portrait} alt="Portrait image" className={style.image} />
     </div>
   );
 }
