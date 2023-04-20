@@ -8,7 +8,6 @@
   padding: 2rem;
   min-height: 100vh;
   background-color: var(--color-background-base);
-  margin: 24px;
 
   @include media-query-desktop() {
     padding: 6rem;
