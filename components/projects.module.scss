@@ -1,0 +1,55 @@
+@import "@/styles/layout.scss";
+
+.projectsContainer {
+  width: 100%;
+  @include media-query-desktop() {
+    max-width: 1100px;
+  }
+}
+
+.project {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+
+  @include media-query-laptop() {
+    gap: 128px;
+    flex-direction: row;
+  }
+
+  .title {
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  .cta {
+    width: fit-content;
+  }
+
+  .thumbnail {
+    border-radius: 4px;
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    align-self: center;
+
+    @include media-query-desktop() {
+      align-self: flex-start;
+      width: 385px;
+      height: 235px;
+    }
+  }
+
+  .technologies {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+}
+
+.rule {
+  border-top: 1px solid var(--color-box-shadow-secondary);
+}

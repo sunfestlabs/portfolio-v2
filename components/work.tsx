@@ -1,8 +1,8 @@
 import { Divider } from "./design-system/divider";
+import { Fragment, useEffect, useState } from "react";
 import { Roboto_Mono } from "next/font/google";
 import { SectionTitle } from "./design-system/section-title";
 import { VStack } from "./design-system/stack";
-import { useEffect, useState } from "react";
 import Spacer from "./design-system/spacer";
 import cx from "classnames";
 import egData from "@/content/work/evil-geniuses.json";
@@ -118,12 +118,12 @@ function WorkDescription(props: WorkDescriptionProps): JSX.Element {
       <ul>
         {workSummary.summary.map((summary, idx) => {
           return (
-            <>
+            <Fragment key={idx}>
               <li key={`${summary}-${idx}`} className={style.responsibility}>
                 {summary}
               </li>
-              <Spacer axis="vertical" size={4} />
-            </>
+              <Spacer key={`spacer-${idx}`} axis="vertical" size={4} />
+            </Fragment>
           );
         })}
       </ul>
