@@ -1,0 +1,7 @@
+{
+  "name": "A Sixth Sense for Stroke",
+  "snippet": "A proof-of-concept using convolutional neural networks (CNNs) to perform image classification on patient X-ray images in order to assess the potential effectiveness of medical therapy on stroke patients.",
+  "url": "https://devpost.com/software/predicting-functional-outcomes-of-mechanical-thrombectomy",
+  "thumbnail": "/dl-mechanical-thrombectomy.jpg",
+  "technologies": ["Python", "Keras", "TensorFlow"]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Stopwatch",
+  "snippet": "Utilizing conversational AI to make games a little bit easier.",
+  "url": "https://github.com/sunfestlabs/stopwatch",
+  "thumbnail": "/avatar.gif",
+  "technologies": ["JavaScript", "Java", "Google Dialogflow", "Node.js"]
+}

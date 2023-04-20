@@ -1,6 +1,7 @@
 import { AboutMe } from "@/components/about";
 import { Hero } from "@/components/hero";
 import { Inter } from "next/font/google";
+import { Projects } from "@/components/projects";
 import { WorkHistory } from "@/components/work";
 import Head from "next/head";
 import Spacer from "@/components/design-system/spacer";
@@ -28,6 +29,8 @@ export default function Home(): JSX.Element {
         <AboutMe />
         <Spacer axis="vertical" size={256} />
         <WorkHistory />
+        <Spacer axis="vertical" size={256} />
+        <Projects />
       </main>
     </>
   );

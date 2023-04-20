@@ -1,0 +1,7 @@
+{
+  "name": "NLP Twitch Plugin",
+  "snippet": "A Chrome extension that uses an NLP network to classify and filter out spam in Twitch chat, making your viewing experience much more meaningful.",
+  "url": "https://chrome.google.com/webstore/detail/nlp-twitch-chat-filter/jjgcebifihedgnbcefehgcnkkeccchpc",
+  "thumbnail": "/nlp-twitch-plugin.jpeg",
+  "technologies": ["JavaScript", "TensorFlow.js", "Python", "HTML/CSS"]
+}
