@@ -26,7 +26,7 @@ export default function Home(): JSX.Element {
         <Hero />
         <Spacer axis="vertical" size={64} />
         <AboutMe />
-        <Spacer axis="vertical" size={64} />
+        <Spacer axis="vertical" size={256} />
         <WorkHistory />
       </main>
     </>

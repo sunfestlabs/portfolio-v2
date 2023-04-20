@@ -1,0 +1,12 @@
+{
+  "company": "Neeva",
+  "startDate": "July 2021",
+  "endDate": "Present",
+  "role": "Software Engineer",
+  "summary": [
+    "Developed Neeva’s first-time user experience, including its homepage, account creation, and premium subscription flows",
+    "Revamped Neeva’s homepage to fully support multiple languages, helping drive expansion into Europe and Asia",
+    "Constructed an end-to-end pipeline using DALL-E and Stable Diffusion to serve generated thumbnails for search results",
+    "Led A/B tests which involved coordinating with design, building UIs, and driving launch discussions, contributing to a 10x increase in users in 2022"
+  ]
+}
