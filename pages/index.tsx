@@ -1,4 +1,5 @@
 import { AboutMe } from "@/components/about";
+import { ContactMe } from "@/components/contact";
 import { Hero } from "@/components/hero";
 import { Inter } from "next/font/google";
 import { Projects } from "@/components/projects";
@@ -31,6 +32,8 @@ export default function Home(): JSX.Element {
         <WorkHistory />
         <Spacer axis="vertical" size={192} />
         <Projects />
+        <Spacer axis="vertical" size={192} />
+        <ContactMe />
       </main>
     </>
   );
