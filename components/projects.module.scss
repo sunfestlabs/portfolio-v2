@@ -1,0 +1,39 @@
+@import "@/styles/layout.scss";
+
+.projectsContainer {
+  max-width: 1100px;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+
+  @include media-query-laptop() {
+    gap: 128px;
+    flex-direction: row;
+  }
+
+  .title {
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  .cta {
+    width: fit-content;
+  }
+
+  .thumbnail {
+    border-radius: 4px;
+  }
+
+  .technologies {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+  }
+}
+
+.rule {
+  border-top: 1px solid var(--color-box-shadow-secondary);
+}
