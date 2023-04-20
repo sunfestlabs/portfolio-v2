@@ -1,0 +1,11 @@
+{
+  "company": "Evil Geniuses",
+  "startDate": "September 2020",
+  "endDate": "May 2021",
+  "role": "Data/Technology Intern",
+  "summary": [
+    "Implemented Python script to integrate sales and partnership records into data lake for visualization",
+    "Hosted a new match queueing system via JavaScript, allowing esports teams to more easily find practice partners",
+    "Augmented official Discord bot with features such as anti-spam protection, profanity filters, and automated giveaways to increase community engagement"
+  ]
+}

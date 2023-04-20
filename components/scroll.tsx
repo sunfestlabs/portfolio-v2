@@ -14,7 +14,7 @@ export function ScrollAffordance(props: ScrollAffordanceProps): JSX.Element {
 
   // Shorten the vertical line depending on the current scroll position.
   useEffect((): (() => void) => {
-    function handleScroll() {
+    function handleScroll(): void {
       const minHeight = 400;
       const maxHeight = 500;
       // determines the rate at which scrolling on the page changes the height.

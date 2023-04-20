@@ -1,3 +1,32 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "plugins": ["@typescript-eslint", "sort-imports-es6-autofix"],
+  "rules": {
+    // most typescript plugin rules were removed, but can be added back in the future, e.g:
+    "@typescript-eslint/explicit-function-return-type": "error",
+    "no-restricted-properties": [
+      2,
+      {
+        "object": "window",
+        "property": "open",
+        "message": "Please use openWindow()."
+      }
+    ],
+    "sort-imports-es6-autofix/sort-imports-es6": [
+      2,
+      {
+        "ignoreCase": false,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": "off"
+      }
+    }
+  ]
 }

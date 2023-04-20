@@ -1,10 +1,16 @@
+@import "@/styles/layout.scss";
+
 .main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem;
+  padding: 2rem;
   min-height: 100vh;
   background-color: var(--color-background-base);
   margin: 24px;
+
+  @include media-query-desktop() {
+    padding: 6rem;
+  }
 }

@@ -1,0 +1,135 @@
+@import "@/styles/layout.scss";
+
+.workContainer {
+  width: 100%;
+  max-width: 800px;
+  min-height: 400px;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include media-query-laptop() {
+    flex-direction: row;
+  }
+}
+
+.selectorContainer {
+  overflow: auto;
+}
+
+.workSelector {
+  --tab-height: 40px;
+  --tab-width: 160px;
+
+  width: max-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  border-bottom: 2px solid var(--color-subtitle);
+
+  @include media-query-laptop() {
+    --tab-height: 80px;
+    flex-direction: column;
+    border-left: 2px solid var(--color-subtitle);
+    border-bottom: 0;
+  }
+
+  .company {
+    cursor: pointer;
+    transition: background-color 0.25s ease-in-out;
+    width: var(--tab-width);
+    height: var(--tab-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 2px 2px 0;
+
+    &.active,
+    &:hover {
+      background-color: var(--color-box-shadow);
+      color: var(--color-cta);
+    }
+
+    @include media-query-laptop() {
+      padding-left: 12px;
+      justify-content: flex-start;
+    }
+  }
+
+  .highlight {
+    position: absolute;
+    top: var(--tab-height);
+    left: 0;
+    width: var(--tab-width);
+    height: 2px;
+    background: var(--color-cta);
+    transform: translateX(calc(var(--active-company-idx) * var(--tab-width)));
+    transition: transform 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition-delay: 0.2s;
+
+    @include media-query-laptop() {
+      top: 0;
+      left: -2px;
+      width: 2px;
+      height: var(--tab-height);
+      transform: translateY(
+        calc(var(--active-company-idx) * var(--tab-height))
+      );
+    }
+  }
+}
+
+.workDescription {
+  color: var(--color-text);
+  flex: 1;
+  animation: pop-in 0.4s;
+  max-width: 500px;
+
+  .jobTitle {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+
+    .companyName {
+      color: var(--color-cta);
+    }
+  }
+
+  .dates {
+    color: var(--color-subtitle);
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .responsibility {
+    font-size: 14px;
+    line-height: 20px;
+
+    &::before {
+      content: "\25B8";
+      margin-right: 8px;
+      color: var(--color-cta);
+    }
+  }
+}
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

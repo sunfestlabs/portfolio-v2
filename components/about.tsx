@@ -1,11 +1,13 @@
+import { Bitter, Roboto_Mono } from "next/font/google";
+import { Divider } from "./design-system/divider";
+import { ScrollAffordance } from "./scroll";
+import { SectionTitle } from "./design-system/section-title";
+import { VStack } from "./design-system/stack";
+import Image from "next/image";
+import Spacer from "./design-system/spacer";
+import avatar from "@/public/avatar.gif";
 import cx from "classnames";
 import style from "./about.module.scss";
-import { Bitter, Roboto_Mono } from "next/font/google";
-import { VStack } from "./design-system/stack";
-import avatar from "@/public/avatar.gif";
-import Image from "next/image";
-import { ScrollAffordance } from "./scroll";
-import Spacer from "./design-system/spacer";
 
 const bitter = Bitter({ subsets: ["latin"] });
 const robotoMono = Roboto_Mono({ subsets: ["latin"] });
@@ -16,8 +18,10 @@ export function AboutMe(): JSX.Element {
       {/* little janky, but we put the scroll affordance here so it lines up with the section title */}
       <ScrollAffordance className={style.scroll} />
       <Spacer axis="vertical" size={64} />
-      <div className={cx(style.title, bitter.className)}>About Me</div>
-      <div className={style.divider} />
+      <SectionTitle>About Me</SectionTitle>
+      <Spacer axis="vertical" size={24} />
+      <Divider />
+      <Spacer axis="vertical" size={24} />
       <div className={style.about}>
         <VStack className={style.description} gap="24px">
           <p>

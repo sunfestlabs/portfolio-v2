@@ -1,0 +1,11 @@
+{
+  "company": "Medinas",
+  "startDate": "June 2020",
+  "endDate": "August 2020",
+  "role": "Software Engineer Intern",
+  "summary": [
+    "Built a platform that detects and extracts product information from a set of photos using the Google Vision API, shortening task duration by 40% and allowing Medinas researchers to more accurately classify incoming medical equipment",
+    "Owned the project from initial brainstorming and system design to final implementation, utilizing React and Java",
+    "Worked closely with Medinas researchers to test in the field and identify ways to improve UX"
+  ]
+}
