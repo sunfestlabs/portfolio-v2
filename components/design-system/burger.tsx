@@ -4,14 +4,15 @@ import cx from "classnames";
 import { useState } from "react";
 
 interface BurgerButtonProps {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
   onClick: () => void;
 }
 
 // Component representing a hamburger button. Note that this is agnostic of the
 // menu it opens.
 export function BurgerButton(props: BurgerButtonProps): JSX.Element {
-  const { onClick } = props;
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { isOpen, setIsOpen, onClick } = props;
 
   return (
     <button

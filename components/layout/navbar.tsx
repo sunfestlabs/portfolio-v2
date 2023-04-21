@@ -13,15 +13,7 @@ export function Navbar(): JSX.Element {
   const navbarRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState<boolean>(true);
   const [hasShadow, setHasShadow] = useState<boolean>(false);
-
-  // function for smooth scrolling, to override the default jump-to-section behavior
-  function scrollToSection(e: React.MouseEvent, id: string): void {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  }
+  const [burgerMenuOpen, setBurgerMenuOpen] = useState<boolean>(false);
 
   // Hide the navbar if the user is scrolling down,
   // then show it again if they scroll up.
@@ -57,51 +49,66 @@ export function Navbar(): JSX.Element {
   }, []);
 
   return (
-    <HStack
-      className={cx(style.navbar, {
+    <VStack
+      className={cx(style.navbarContainer, {
         [style.visible]: visible,
         [style.shadow]: hasShadow,
       })}
-      ref={navbarRef}
     >
-      <div className={cx(bitter.className, style.logo)}>CTN</div>
-      <div className={cx(style.desktopLinks, bitter.className)}>
-        <Link
-          href="#about"
-          className={style.link}
-          onClick={(e): void => scrollToSection(e, "about")}
-        >
-          About
-        </Link>
-        <Link
-          href="#work"
-          className={style.link}
-          onClick={(e): void => scrollToSection(e, "work")}
-        >
-          Work
-        </Link>
-        <Link
-          href="#projects"
-          className={style.link}
-          onClick={(e): void => scrollToSection(e, "projects")}
-        >
-          Projects
-        </Link>
-        <Link
-          href="#contact"
-          className={style.link}
-          onClick={(e): void => scrollToSection(e, "contact")}
-        >
-          Contact
-        </Link>
-        <Link href="/ChrisNiveraCVResume.pdf" className={style.link}>
-          Resume
-        </Link>
-      </div>
-      <div className={style.mobileHamburger}>
-        <BurgerButton onClick={() => {}} />
-      </div>
-    </HStack>
+      <HStack
+        className={cx(style.navbar, {
+          [style.visible]: visible,
+          [style.shadow]: hasShadow,
+          [style.burgerOpen]: burgerMenuOpen,
+        })}
+        ref={navbarRef}
+      >
+        <div className={cx(bitter.className, style.logo)}>CTN</div>
+        <div className={cx(style.desktopLinks, bitter.className)}>
+          <Link
+            href="#about"
+            className={style.link}
+            onClick={(e): void => scrollToSection(e, "about")}
+          >
+            About
+          </Link>
+          <Link
+            href="#work"
+            className={style.link}
+            onClick={(e): void => scrollToSection(e, "work")}
+          >
+            Work
+          </Link>
+          <Link
+            href="#projects"
+            className={style.link}
+            onClick={(e): void => scrollToSection(e, "projects")}
+          >
+            Projects
+          </Link>
+          <Link
+            href="#contact"
+            className={style.link}
+            onClick={(e): void => scrollToSection(e, "contact")}
+          >
+            Contact
+          </Link>
+          <Link href="/ChrisNiveraCVResume.pdf" className={style.link}>
+            Resume
+          </Link>
+        </div>
+        <div className={style.mobileHamburger}>
+          <BurgerButton
+            isOpen={burgerMenuOpen}
+            setIsOpen={setBurgerMenuOpen}
+            onClick={() => {
+              setBurgerMenuOpen(!burgerMenuOpen);
+            }}
+          />
+        </div>
+      </HStack>
+      <BurgerMenu isOpen={burgerMenuOpen} setIsOpen={setBurgerMenuOpen} />
+    </VStack>
   );
 }
 
@@ -110,6 +117,58 @@ interface BurgerMenuProps {
   setIsOpen: (isOpen: boolean) => void;
 }
 
+// Burger menu, which is only shown on mobile screen sizes (controlled by media query)
 export function BurgerMenu(props: BurgerMenuProps): JSX.Element {
-  return <></>;
+  const { isOpen, setIsOpen } = props;
+  return (
+    <VStack
+      className={cx(style.burgerMenu, bitter.className, {
+        [style.visible]: isOpen,
+      })}
+    >
+      <Link
+        href="#about"
+        className={style.link}
+        onClick={(e): void => {
+          scrollToSection(e, "about");
+          setIsOpen(false);
+        }}
+      >
+        About
+      </Link>
+      <Link
+        href="#work"
+        className={style.link}
+        onClick={(e): void => scrollToSection(e, "work")}
+      >
+        Work
+      </Link>
+      <Link
+        href="#projects"
+        className={style.link}
+        onClick={(e): void => scrollToSection(e, "projects")}
+      >
+        Projects
+      </Link>
+      <Link
+        href="#contact"
+        className={style.link}
+        onClick={(e): void => scrollToSection(e, "contact")}
+      >
+        Contact
+      </Link>
+      <Link href="/ChrisNiveraCVResume.pdf" className={style.link}>
+        Resume
+      </Link>
+    </VStack>
+  );
+}
+
+// function for smooth scrolling, to override the default jump-to-section behavior
+function scrollToSection(e: React.MouseEvent, id: string): void {
+  e.preventDefault();
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 }
