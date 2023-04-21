@@ -2,6 +2,7 @@ import { Bitter, Roboto_Mono } from "next/font/google";
 import { Button } from "../design-system/button";
 import { HStack } from "../design-system/stack";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import cx from "classnames";
 import style from "./navbar.module.scss";
 
@@ -64,37 +65,37 @@ export function Navbar(): JSX.Element {
     >
       <div className={cx(bitter.className, style.logo)}>CTN</div>
       <div className={cx(style.desktopLinks, bitter.className)}>
-        <a
+        <Link
           href="#about"
           className={style.link}
           onClick={(e): void => scrollToSection(e, "about")}
         >
           About
-        </a>
-        <a
+        </Link>
+        <Link
           href="#work"
           className={style.link}
           onClick={(e): void => scrollToSection(e, "work")}
         >
           Work
-        </a>
-        <a
+        </Link>
+        <Link
           href="#projects"
           className={style.link}
           onClick={(e): void => scrollToSection(e, "projects")}
         >
           Projects
-        </a>
-        <a
+        </Link>
+        <Link
           href="#contact"
           className={style.link}
           onClick={(e): void => scrollToSection(e, "contact")}
         >
           Contact
-        </a>
-        <a href="/ChrisNiveraCVResume.pdf" className={style.link}>
+        </Link>
+        <Link href="/ChrisNiveraCVResume.pdf" className={style.link}>
           Resume
-        </a>
+        </Link>
       </div>
     </HStack>
   );
