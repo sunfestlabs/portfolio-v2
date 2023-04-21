@@ -11,7 +11,7 @@ export function Socials(): JSX.Element {
       <a href="https://github.com/sunfestlabs">
         <Image src={githubIcon} alt={"GitHub"} className={style.icon} />
       </a>
-      <a href="https://linkedin.com/christopher-nivera">
+      <a href="https://linkedin.com/in/christopher-nivera">
         <Image src={linkedinIcon} alt={"LinkedIn"} className={style.icon} />
       </a>
       <a href="https://twitter.com/nivera_">
