@@ -5,6 +5,7 @@
   --padding-h: 64px;
   --padding-v: 24px;
   width: 100%;
+  height: fit-content;
   position: fixed;
   top: calc(0px - var(--navbar-height) - var(--padding-v));
   z-index: 1;
@@ -20,6 +21,11 @@
   background-color: var(--color-background-base);
   padding: var(--padding-v) calc(var(--padding-h) / 2);
   justify-content: space-between;
+  transition: box-shadow 0.2s ease-in-out;
+
+  @include media-query-tablet() {
+    padding: var(--padding-v) var(--padding-h);
+  }
 
   &.shadow {
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
@@ -67,7 +73,6 @@
 
     @include media-query-tablet() {
       display: flex;
-      padding: var(--padding-v) var(--padding-h);
     }
   }
 }
@@ -82,7 +87,6 @@
 
 .burgerMenu {
   width: 100%;
-  height: 100%;
   overflow: hidden;
   max-height: 0;
   background-color: var(--color-box-shadow);
@@ -90,8 +94,9 @@
   gap: 64px;
 
   &.visible {
+    height: 100vh;
     max-height: 100vh;
-    transition: max-height 0.5s ease;
+    transition: max-height 0.2s ease;
     padding-top: 64px;
   }
 
