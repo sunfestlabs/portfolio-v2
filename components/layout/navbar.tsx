@@ -1,10 +1,11 @@
 import { Bitter, Roboto_Mono } from "next/font/google";
 import { Button } from "../design-system/button";
-import { HStack } from "../design-system/stack";
+import { HStack, VStack } from "../design-system/stack";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import cx from "classnames";
 import style from "./navbar.module.scss";
+import { BurgerButton } from "../design-system/burger";
 
 const bitter = Bitter({ subsets: ["latin"] });
 
@@ -97,6 +98,18 @@ export function Navbar(): JSX.Element {
           Resume
         </Link>
       </div>
+      <div className={style.mobileHamburger}>
+        <BurgerButton onClick={() => {}} />
+      </div>
     </HStack>
   );
+}
+
+interface BurgerMenuProps {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+}
+
+export function BurgerMenu(props: BurgerMenuProps): JSX.Element {
+  return <></>;
 }
