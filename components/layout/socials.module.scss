@@ -1,0 +1,14 @@
+@import "@/styles/layout.scss";
+
+.socials {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  height: fit-content;
+  left: 24px;
+  gap: 16px;
+
+  @include media-query-laptop() {
+    display: flex;
+  }
+}
