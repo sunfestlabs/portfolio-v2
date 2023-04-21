@@ -138,21 +138,30 @@ export function BurgerMenu(props: BurgerMenuProps): JSX.Element {
       <Link
         href="#work"
         className={style.link}
-        onClick={(e): void => scrollToSection(e, "work")}
+        onClick={(e): void => {
+          scrollToSection(e, "work");
+          setIsOpen(false);
+        }}
       >
         Work
       </Link>
       <Link
         href="#projects"
         className={style.link}
-        onClick={(e): void => scrollToSection(e, "projects")}
+        onClick={(e): void => {
+          scrollToSection(e, "projects");
+          setIsOpen(false);
+        }}
       >
         Projects
       </Link>
       <Link
         href="#contact"
         className={style.link}
-        onClick={(e): void => scrollToSection(e, "contact")}
+        onClick={(e): void => {
+          scrollToSection(e, "contact");
+          setIsOpen(false);
+        }}
       >
         Contact
       </Link>
