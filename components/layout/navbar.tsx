@@ -19,7 +19,6 @@ export function Navbar(): JSX.Element {
   useEffect((): (() => void) => {
     let prevScroll = window.scrollY;
 
-    // TODO: debounce this
     function handleScroll(): void {
       const currentScroll = window.scrollY;
       if (currentScroll <= 0) {
