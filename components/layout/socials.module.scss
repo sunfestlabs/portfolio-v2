@@ -21,6 +21,7 @@
         brightness(95%) contrast(104%);
     }
   }
+
   @include media-query-laptop() {
     display: flex;
     left: 24px;

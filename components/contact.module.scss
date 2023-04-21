@@ -8,4 +8,23 @@
     line-height: 48px;
     font-weight: 700;
   }
+
+  .socials {
+    width: 100%;
+    justify-content: center;
+    gap: 48px;
+
+    .icon {
+      // Converting the fill of the SVG to --color-text
+      filter: invert(10%) sepia(66%) saturate(2627%) hue-rotate(221deg)
+        brightness(95%) contrast(104%);
+      transition: filter 0.3s ease-in-out;
+
+      &:hover {
+        // Converting the fill of the SVG to --color-cta
+        filter: invert(13%) sepia(100%) saturate(6101%) hue-rotate(276deg)
+          brightness(84%) contrast(119%);
+      }
+    }
+  }
 }
