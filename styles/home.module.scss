@@ -9,7 +9,7 @@
   min-height: 100vh;
   background-color: var(--color-background-base);
 
-  @include media-query-desktop() {
+  @include media-query-tablet() {
     padding: 6rem;
   }
 }

@@ -7,8 +7,7 @@
   justify-content: flex-end;
   bottom: 0px;
   height: fit-content;
-  left: 48px;
-  gap: 16px;
+  gap: 28px;
 
   .icon {
     // Converting the fill of the SVG to --color-text-accent
@@ -28,7 +27,11 @@
   }
 
   @include media-query-desktop() {
-    left: 36px;
+    left: 32px;
+  }
+
+  @include media-query-desktop-hifi() {
+    left: 48px;
   }
 
   .verticalRule {

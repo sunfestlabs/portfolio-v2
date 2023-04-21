@@ -2,12 +2,19 @@
 
 .workContainer {
   width: 100%;
-  max-width: 500px;
   min-height: 450px;
 
   @include media-query-tablet() {
-    max-width: 800px;
+    max-width: 550px;
+  }
+
+  @include media-query-laptop() {
+    max-width: 650px;
     width: max-content;
+  }
+
+  @include media-query-desktop() {
+    max-width: 750px;
   }
 }
 
