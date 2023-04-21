@@ -1,11 +1,10 @@
 import { Bitter, Roboto_Mono } from "next/font/google";
-import { Button } from "../design-system/button";
+import { BurgerButton } from "../design-system/burger";
 import { HStack, VStack } from "../design-system/stack";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import cx from "classnames";
 import style from "./navbar.module.scss";
-import { BurgerButton } from "../design-system/burger";
 
 const bitter = Bitter({ subsets: ["latin"] });
 
@@ -100,7 +99,7 @@ export function Navbar(): JSX.Element {
           <BurgerButton
             isOpen={burgerMenuOpen}
             setIsOpen={setBurgerMenuOpen}
-            onClick={() => {
+            onClick={(): void => {
               setBurgerMenuOpen(!burgerMenuOpen);
             }}
           />
