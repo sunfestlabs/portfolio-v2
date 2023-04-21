@@ -2,6 +2,7 @@ import { AboutMe } from "@/components/about";
 import { ContactMe } from "@/components/contact";
 import { Hero } from "@/components/hero";
 import { Inter } from "next/font/google";
+import { Navbar } from "@/components/layout/navbar";
 import { Projects } from "@/components/projects";
 import { WorkHistory } from "@/components/work";
 import Head from "next/head";
@@ -24,6 +25,7 @@ export default function Home(): JSX.Element {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={cx(style.main, inter.className)}>
+        <Navbar />
         <Spacer axis="vertical" size={64} />
         <Hero />
         <Spacer axis="vertical" size={64} />

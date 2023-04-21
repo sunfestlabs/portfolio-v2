@@ -9,7 +9,7 @@ const bitter = Bitter({ subsets: ["latin"] });
 
 export function ContactMe(): JSX.Element {
   return (
-    <VStack className={style.chatContainer}>
+    <VStack className={style.chatContainer} id="contact">
       <div className={cx(style.title, bitter.className)}>Let&apos;s chat!</div>
       <Spacer axis="vertical" size={12} />
       <div className={style.snippet}>

@@ -1,0 +1,63 @@
+.burgerMenu {
+  display: inline-block;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.burgerBox {
+  width: 30px;
+  height: 32px;
+  display: inline-block;
+  position: relative;
+}
+
+.burgerInner {
+  display: block;
+  position: absolute;
+  top: 50%;
+  margin-top: -2px;
+  left: 0;
+  width: 30px;
+  height: 4px;
+  background-color: #000;
+  background-color: var(--color-text);
+  transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
+    opacity 0.3s ease;
+}
+
+.burgerInner::before,
+.burgerInner::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  background-color: var(--color-text);
+  transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
+    opacity 0.3s ease;
+}
+
+.burgerInner::before {
+  top: -8px;
+}
+
+.burgerInner::after {
+  bottom: -8px;
+}
+
+.burgerActive .burgerInner {
+  height: 4px;
+  transform: rotate(45deg);
+}
+
+.burgerActive .burgerInner::before {
+  height: 4px;
+  transform: translate(0, 8px) rotate(90deg);
+}
+
+.burgerActive .burgerInner::after {
+  height: 4px;
+  transform: translate(0, -8px) rotate(90deg);
+}

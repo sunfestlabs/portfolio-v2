@@ -45,7 +45,7 @@ export function WorkHistory(): JSX.Element {
   const activeCompanySummary = mapActiveCompanyToDescription(activeCompany);
 
   return (
-    <div className={style.workContainer}>
+    <div className={style.workContainer} id="work">
       <SectionTitle>Work Experience</SectionTitle>
       <Spacer axis="vertical" size={32} />
       <Divider />
