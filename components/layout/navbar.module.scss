@@ -5,14 +5,13 @@
   --navbar-height: 64px;
   --padding-h: 64px;
   --padding-v: 24px;
-  background-color: var(--color-background-baose);
+  background-color: var(--color-background-base);
   padding: var(--padding-v) var(--padding-h);
   justify-content: space-between;
   position: fixed;
   top: calc(0px - var(--navbar-height) - var(--padding-v));
   z-index: 1;
   transition: all 0.2s ease-in-out;
-  width: 100%;
 
   &.visible {
     top: 0px;
