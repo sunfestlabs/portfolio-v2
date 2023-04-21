@@ -50,12 +50,11 @@ export function Navbar(): JSX.Element {
   return (
     <VStack
       className={cx(style.navbarContainer, {
-        [style.visible]: visible,
+        [style.visible]: visible || burgerMenuOpen,
       })}
     >
       <HStack
         className={cx(style.navbar, {
-          [style.visible]: visible,
           [style.shadow]: hasShadow && !burgerMenuOpen,
           [style.burgerOpen]: burgerMenuOpen,
         })}

@@ -33,18 +33,17 @@
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
   }
 
-  &.burgerOpen {
-    &::before {
-      z-index: 0;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: var(--color-box-shadow);
-      content: "";
-      width: 100%;
-      height: 100%;
-      animation: expand 0.05s linear;
-    }
+  // hacky way using pseudo-elements to cascade the background change from the very top of the viewport
+  &.burgerOpen::before {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-box-shadow);
+    content: "";
+    width: 100%;
+    height: 100%;
+    animation: expand 0.05s linear;
 
     @keyframes expand {
       0% {
@@ -109,7 +108,7 @@
 
 .burgerMenu {
   width: 100%;
-  overflow: hidden;
+  overflow-y: auto;
   max-height: 0;
   background-color: var(--color-box-shadow);
   align-items: center;
