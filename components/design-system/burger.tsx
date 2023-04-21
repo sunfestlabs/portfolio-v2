@@ -1,7 +1,7 @@
 import { on } from "events";
-import style from "./burger.module.scss";
-import cx from "classnames";
 import { useState } from "react";
+import cx from "classnames";
+import style from "./burger.module.scss";
 
 interface BurgerButtonProps {
   isOpen: boolean;
