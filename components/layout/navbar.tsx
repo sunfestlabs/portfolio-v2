@@ -52,13 +52,12 @@ export function Navbar(): JSX.Element {
     <VStack
       className={cx(style.navbarContainer, {
         [style.visible]: visible,
-        [style.shadow]: hasShadow,
       })}
     >
       <HStack
         className={cx(style.navbar, {
           [style.visible]: visible,
-          [style.shadow]: hasShadow,
+          [style.shadow]: hasShadow && !burgerMenuOpen,
           [style.burgerOpen]: burgerMenuOpen,
         })}
         ref={navbarRef}
