@@ -1,0 +1,43 @@
+@import "@/styles/layout.scss";
+
+.socials {
+  display: none;
+  position: fixed;
+  align-items: center;
+  justify-content: flex-end;
+  bottom: 0px;
+  height: fit-content;
+  gap: 28px;
+
+  .icon {
+    // Converting the fill of the SVG to --color-text-accent
+    filter: invert(41%) sepia(9%) saturate(6719%) hue-rotate(186deg)
+      brightness(89%) contrast(84%);
+    transition: filter 0.3s ease-in-out;
+
+    &:hover {
+      // Converting the fill of the SVG to --color-text
+      filter: invert(10%) sepia(66%) saturate(2627%) hue-rotate(221deg)
+        brightness(95%) contrast(104%);
+    }
+  }
+
+  @include media-query-laptop() {
+    display: flex;
+    left: 24px;
+  }
+
+  @include media-query-desktop() {
+    left: 32px;
+  }
+
+  @include media-query-desktop-hifi() {
+    left: 48px;
+  }
+
+  .verticalRule {
+    height: 88px;
+    width: 2px;
+    background: var(--color-text-accent);
+  }
+}

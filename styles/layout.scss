@@ -29,3 +29,9 @@
     @content;
   }
 }
+
+@mixin media-query-desktop-hifi() {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
