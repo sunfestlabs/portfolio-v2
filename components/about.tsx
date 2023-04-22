@@ -3,6 +3,7 @@ import { Divider } from "./design-system/divider";
 import { ScrollAffordance } from "./scroll";
 import { SectionTitle } from "./design-system/section-title";
 import { VStack } from "./design-system/stack";
+import { Variants, motion } from "framer-motion";
 import Image from "next/image";
 import Spacer from "./design-system/spacer";
 import avatar from "@/public/avatar.gif";
@@ -13,10 +14,27 @@ const bitter = Bitter({ subsets: ["latin"] });
 const robotoMono = Roboto_Mono({ subsets: ["latin"] });
 
 export function AboutMe(): JSX.Element {
+  const scrollAffordanceVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        delay: 4,
+      },
+    },
+  };
+
   return (
     <div className={style.container}>
       {/* little janky, but we put the scroll affordance here so it lines up with the section title */}
-      <ScrollAffordance className={style.scroll} />
+      <motion.div
+        variants={scrollAffordanceVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <ScrollAffordance className={style.scroll} />
+      </motion.div>
       <Spacer axis="vertical" size={64} />
       <SectionTitle id="about">About Me</SectionTitle>
       <Spacer axis="vertical" size={24} />

@@ -1,6 +1,7 @@
 import { Bitter, Roboto_Mono } from "next/font/google";
 import { BurgerButton } from "../design-system/burger";
 import { HStack, VStack } from "../design-system/stack";
+import { Variants, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import cx from "classnames";
@@ -13,6 +14,28 @@ export function Navbar(): JSX.Element {
   const [visible, setVisible] = useState<boolean>(true);
   const [hasShadow, setHasShadow] = useState<boolean>(false);
   const [burgerMenuOpen, setBurgerMenuOpen] = useState<boolean>(false);
+
+  // Framer Motion animation constants
+  const animationVariants: Variants = {
+    hidden: {},
+    visible: {
+      transition: {
+        delayChildren: 0.5,
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const childVariants: Variants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "tween",
+      },
+    },
+  };
 
   // Hide the navbar if the user is scrolling down,
   // then show it again if they scroll up.
@@ -59,40 +82,62 @@ export function Navbar(): JSX.Element {
         })}
         ref={navbarRef}
       >
-        <div className={cx(bitter.className, style.logo)}>CTN</div>
-        <div className={cx(style.desktopLinks, bitter.className)}>
-          <Link
-            href="#about"
-            className={style.link}
-            onClick={(e): void => scrollToSection(e, "about")}
-          >
-            About
-          </Link>
-          <Link
-            href="#work"
-            className={style.link}
-            onClick={(e): void => scrollToSection(e, "work")}
-          >
-            Work
-          </Link>
-          <Link
-            href="#projects"
-            className={style.link}
-            onClick={(e): void => scrollToSection(e, "projects")}
-          >
-            Projects
-          </Link>
-          <Link
-            href="#contact"
-            className={style.link}
-            onClick={(e): void => scrollToSection(e, "contact")}
-          >
-            Contact
-          </Link>
-          <Link href="/ChrisNiveraCVResume.pdf" className={style.link}>
-            Resume
-          </Link>
-        </div>
+        <motion.div
+          className={cx(bitter.className, style.logo)}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          CTN
+        </motion.div>
+        <motion.div
+          variants={animationVariants}
+          initial="hidden"
+          animate="visible"
+          className={cx(style.desktopLinks, bitter.className)}
+        >
+          <motion.div variants={childVariants}>
+            <Link
+              href="#about"
+              className={style.link}
+              onClick={(e): void => scrollToSection(e, "about")}
+            >
+              About
+            </Link>
+          </motion.div>
+          <motion.div variants={childVariants}>
+            <Link
+              href="#work"
+              className={style.link}
+              onClick={(e): void => scrollToSection(e, "work")}
+            >
+              Work
+            </Link>
+          </motion.div>
+          <motion.div variants={childVariants}>
+            <Link
+              href="#projects"
+              className={style.link}
+              onClick={(e): void => scrollToSection(e, "projects")}
+            >
+              Projects
+            </Link>
+          </motion.div>
+          <motion.div variants={childVariants}>
+            <Link
+              href="#contact"
+              className={style.link}
+              onClick={(e): void => scrollToSection(e, "contact")}
+            >
+              Contact
+            </Link>
+          </motion.div>
+          <motion.div variants={childVariants}>
+            <Link href="/ChrisNiveraCVResume.pdf" className={style.link}>
+              Resume
+            </Link>
+          </motion.div>
+        </motion.div>
         <div className={style.mobileHamburger}>
           <BurgerButton
             isOpen={burgerMenuOpen}
