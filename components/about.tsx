@@ -42,9 +42,7 @@ export function AboutMe(): JSX.Element {
       </motion.div>
       <Spacer axis="vertical" size={64} />
       <motion.div ref={containerRef} {...animationProps}>
-        <motion.div>
-          <SectionTitle id="about">About Me</SectionTitle>
-        </motion.div>
+        <SectionTitle id="about">About Me</SectionTitle>
         <Spacer axis="vertical" size={24} />
         <Divider />
         <Spacer axis="vertical" size={24} />

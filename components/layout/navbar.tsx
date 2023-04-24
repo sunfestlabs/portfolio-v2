@@ -1,4 +1,4 @@
-import { Bitter, Roboto_Mono } from "next/font/google";
+import { Bitter } from "next/font/google";
 import { BurgerButton } from "../design-system/burger";
 import { HStack, VStack } from "../design-system/stack";
 import { Variants, motion } from "framer-motion";

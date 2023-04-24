@@ -1,5 +1,3 @@
-import { on } from "events";
-import { useState } from "react";
 import cx from "classnames";
 import style from "./burger.module.scss";
 

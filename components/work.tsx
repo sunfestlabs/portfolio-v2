@@ -1,13 +1,10 @@
 import { Divider } from "./design-system/divider";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { Roboto_Mono } from "next/font/google";
-import {
-  SectionPopInVariants,
-  useAnimateOnViewOnce,
-} from "./design-system/animations";
 import { SectionTitle } from "./design-system/section-title";
 import { VStack } from "./design-system/stack";
 import { motion } from "framer-motion";
+import { useAnimateOnViewOnce } from "./design-system/animations";
 import Spacer from "./design-system/spacer";
 import cx from "classnames";
 import egData from "@/content/work/evil-geniuses.json";

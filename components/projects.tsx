@@ -2,12 +2,9 @@ import { Bitter, Roboto_Mono } from "next/font/google";
 import { Button } from "./design-system/button";
 import { Divider } from "./design-system/divider";
 import { HStack, VStack } from "./design-system/stack";
-import {
-  SectionPopInVariants,
-  useAnimateOnViewOnce,
-} from "./design-system/animations";
 import { SectionTitle } from "./design-system/section-title";
 import { motion } from "framer-motion";
+import { useAnimateOnViewOnce } from "./design-system/animations";
 import { useRef } from "react";
 import Image from "next/image";
 import Spacer from "./design-system/spacer";
