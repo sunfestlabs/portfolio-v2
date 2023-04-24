@@ -1,9 +1,13 @@
 import { Bitter } from "next/font/google";
 import { Button } from "./design-system/button";
 import { HStack, VStack } from "./design-system/stack";
-import { SectionPopInVariants } from "./design-system/animations";
+import {
+  SectionPopInVariants,
+  useAnimateOnViewOnce,
+} from "./design-system/animations";
 import { SocialLinks } from "@/content/socials";
 import { motion } from "framer-motion";
+import { useRef } from "react";
 import Image from "next/image";
 import Spacer from "./design-system/spacer";
 import cx from "classnames";
@@ -15,12 +19,10 @@ import twitterIcon from "@/public/twitter.svg";
 const bitter = Bitter({ subsets: ["latin"] });
 
 export function ContactMe(): JSX.Element {
+  const ref = useRef<HTMLDivElement>(null);
+  const animationProps = useAnimateOnViewOnce({ ref });
   return (
-    <motion.div
-      variants={SectionPopInVariants}
-      initial="hidden"
-      whileInView="visible"
-    >
+    <motion.div {...animationProps} ref={ref}>
       <VStack className={style.chatContainer} id="contact">
         <div className={cx(style.title, bitter.className)}>
           Let&apos;s chat!
