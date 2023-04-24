@@ -138,7 +138,12 @@ export function Navbar(): JSX.Element {
             </Link>
           </motion.div>
         </motion.div>
-        <div className={style.mobileHamburger}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className={style.mobileHamburger}
+        >
           <BurgerButton
             isOpen={burgerMenuOpen}
             setIsOpen={setBurgerMenuOpen}
@@ -146,7 +151,7 @@ export function Navbar(): JSX.Element {
               setBurgerMenuOpen(!burgerMenuOpen);
             }}
           />
-        </div>
+        </motion.div>
       </HStack>
       <BurgerMenu isOpen={burgerMenuOpen} setIsOpen={setBurgerMenuOpen} />
     </VStack>
@@ -161,8 +166,32 @@ interface BurgerMenuProps {
 // Burger menu, which is only shown on mobile screen sizes (controlled by media query)
 export function BurgerMenu(props: BurgerMenuProps): JSX.Element {
   const { isOpen, setIsOpen } = props;
+  const animationVariants: Variants = {
+    hidden: {},
+    visible: {
+      transition: {
+        delayChildren: 0.5,
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const childVariants: Variants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "tween",
+      },
+    },
+  };
+
   return (
-    <VStack
+    <motion.div
+      variants={animationVariants}
+      initial="hidden"
+      whileInView={isOpen ? "visible" : "hidden"} // also need to check that the burger menu is open and visible, since it's technically always "in view"
       className={cx(style.burgerMenu, bitter.className, {
         [style.visible]: isOpen,
       })}
@@ -175,7 +204,7 @@ export function BurgerMenu(props: BurgerMenuProps): JSX.Element {
           setIsOpen(false);
         }}
       >
-        About
+        <motion.div variants={childVariants}>About</motion.div>
       </Link>
       <Link
         href="#work"
@@ -185,7 +214,7 @@ export function BurgerMenu(props: BurgerMenuProps): JSX.Element {
           setIsOpen(false);
         }}
       >
-        Work
+        <motion.div variants={childVariants}>Work</motion.div>
       </Link>
       <Link
         href="#projects"
@@ -195,7 +224,7 @@ export function BurgerMenu(props: BurgerMenuProps): JSX.Element {
           setIsOpen(false);
         }}
       >
-        Projects
+        <motion.div variants={childVariants}>Projects</motion.div>
       </Link>
       <Link
         href="#contact"
@@ -205,12 +234,12 @@ export function BurgerMenu(props: BurgerMenuProps): JSX.Element {
           setIsOpen(false);
         }}
       >
-        Contact
+        <motion.div variants={childVariants}>Contact</motion.div>
       </Link>
       <Link href="/ChrisNiveraCVResume.pdf" className={style.link}>
-        Resume
+        <motion.div variants={childVariants}>Resume</motion.div>
       </Link>
-    </VStack>
+    </motion.div>
   );
 }
 

@@ -36,8 +36,9 @@ export function AboutMe(): JSX.Element {
         variants={scrollAffordanceVariants}
         initial="hidden"
         animate="visible"
+        className={style.scroll}
       >
-        <ScrollAffordance className={style.scroll} />
+        <ScrollAffordance />
       </motion.div>
       <Spacer axis="vertical" size={64} />
       <motion.div ref={containerRef} {...animationProps}>
