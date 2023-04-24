@@ -20,11 +20,12 @@ export function Hero(): JSX.Element {
   };
 
   const childVariants = {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 80 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
+        duration: 0.5,
         type: "tween",
       },
     },

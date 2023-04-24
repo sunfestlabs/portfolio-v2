@@ -27,7 +27,7 @@ export function Navbar(): JSX.Element {
   };
 
   const childVariants: Variants = {
-    hidden: { opacity: 0, y: -20 },
+    hidden: { opacity: 0, y: -40 },
     visible: {
       opacity: 1,
       y: 0,

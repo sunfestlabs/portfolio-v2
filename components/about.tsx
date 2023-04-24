@@ -19,9 +19,10 @@ export function AboutMe(): JSX.Element {
   const animationProps = useAnimateOnViewOnce({ ref: containerRef });
 
   const scrollAffordanceVariants: Variants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0, y: 90 },
     visible: {
       opacity: 1,
+      y: 0,
       transition: {
         duration: 0.5,
         delay: 2.75,
