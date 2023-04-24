@@ -1,8 +1,13 @@
 import { Divider } from "./design-system/divider";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { Roboto_Mono } from "next/font/google";
+import {
+  SectionPopInVariants,
+  useAnimateOnViewOnce,
+} from "./design-system/animations";
 import { SectionTitle } from "./design-system/section-title";
 import { VStack } from "./design-system/stack";
+import { motion } from "framer-motion";
 import Spacer from "./design-system/spacer";
 import cx from "classnames";
 import egData from "@/content/work/evil-geniuses.json";
@@ -43,9 +48,16 @@ const defaultWorkSummary: WorkSummary = {
 export function WorkHistory(): JSX.Element {
   const [activeCompany, setActiveCompany] = useState<Company>(Company.Neeva);
   const activeCompanySummary = mapActiveCompanyToDescription(activeCompany);
+  const ref = useRef<HTMLDivElement>(null);
+  const animationProps = useAnimateOnViewOnce({ ref });
 
   return (
-    <div className={style.workContainer} id="work">
+    <motion.div
+      className={style.workContainer}
+      id="work"
+      ref={ref}
+      {...animationProps}
+    >
       <SectionTitle>Work Experience</SectionTitle>
       <Spacer axis="vertical" size={32} />
       <Divider />
@@ -59,7 +71,7 @@ export function WorkHistory(): JSX.Element {
         </div>
         <WorkDescription workSummary={activeCompanySummary} />
       </div>
-    </div>
+    </motion.div>
   );
 }
 

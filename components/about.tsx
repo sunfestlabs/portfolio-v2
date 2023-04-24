@@ -1,32 +1,36 @@
-import { Bitter, Roboto_Mono } from "next/font/google";
 import { Divider } from "./design-system/divider";
+import { Roboto_Mono } from "next/font/google";
 import { ScrollAffordance } from "./scroll";
 import { SectionTitle } from "./design-system/section-title";
 import { VStack } from "./design-system/stack";
 import { Variants, motion } from "framer-motion";
+import { useAnimateOnViewOnce } from "./design-system/animations";
+import { useRef } from "react";
 import Image from "next/image";
 import Spacer from "./design-system/spacer";
 import avatar from "@/public/avatar.gif";
 import cx from "classnames";
 import style from "./about.module.scss";
 
-const bitter = Bitter({ subsets: ["latin"] });
 const robotoMono = Roboto_Mono({ subsets: ["latin"] });
 
 export function AboutMe(): JSX.Element {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const animationProps = useAnimateOnViewOnce({ ref: containerRef });
+
   const scrollAffordanceVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
         duration: 0.5,
-        delay: 4,
+        delay: 2.75,
       },
     },
   };
 
   return (
-    <div className={style.container}>
+    <motion.div className={style.container}>
       {/* little janky, but we put the scroll affordance here so it lines up with the section title */}
       <motion.div
         variants={scrollAffordanceVariants}
@@ -36,34 +40,38 @@ export function AboutMe(): JSX.Element {
         <ScrollAffordance className={style.scroll} />
       </motion.div>
       <Spacer axis="vertical" size={64} />
-      <SectionTitle id="about">About Me</SectionTitle>
-      <Spacer axis="vertical" size={24} />
-      <Divider />
-      <Spacer axis="vertical" size={24} />
-      <div className={style.about}>
-        <VStack className={style.description} gap="24px">
-          <p>
-            Hi! I&apos;m Chris Nivera, a software engineer with a passion for
-            making approachable and effective user interfaces. I first got
-            interested in computer science thanks to my love for gaming, much to
-            my parents&apos; initial chagrin. Nevertheless, the countless hours
-            I&apos;ve spent glued to all sorts of games fuel my desire to build
-            memorable experiences on the web.
-          </p>
-          <p>
-            Since then, I&apos;ve had the opportunity to craft some awesome
-            products at some amazing organizations, including Medinas (a
-            healthcare startup) and Evil Geniuses (an esports organization).
-            Currently, I&apos;m a full stack engineer at Neeva, where I&apos;m
-            excited to push the boundaries of what it means to be a search
-            engine.
-          </p>
-          <p>Recently, I&apos;ve been building with the following tools:</p>
-          <Technologies />
-        </VStack>
-        <Image src={avatar} alt="animated avatar" className={style.avatar} />
-      </div>
-    </div>
+      <motion.div ref={containerRef} {...animationProps}>
+        <motion.div>
+          <SectionTitle id="about">About Me</SectionTitle>
+        </motion.div>
+        <Spacer axis="vertical" size={24} />
+        <Divider />
+        <Spacer axis="vertical" size={24} />
+        <div className={style.about}>
+          <VStack className={style.description} gap="24px">
+            <p>
+              Hi! I&apos;m Chris Nivera, a software engineer with a passion for
+              making approachable and effective user interfaces. I first got
+              interested in computer science thanks to my love for gaming, much
+              to my parents&apos; initial chagrin. Nevertheless, the countless
+              hours I&apos;ve spent glued to all sorts of games fuel my desire
+              to build memorable experiences on the web.
+            </p>
+            <p>
+              Since then, I&apos;ve had the opportunity to craft some awesome
+              products at some amazing organizations, including Medinas (a
+              healthcare startup) and Evil Geniuses (an esports organization).
+              Currently, I&apos;m a full stack engineer at Neeva, where I&apos;m
+              excited to push the boundaries of what it means to be a search
+              engine.
+            </p>
+            <p>Recently, I&apos;ve been building with the following tools:</p>
+            <Technologies />
+          </VStack>
+          <Image src={avatar} alt="animated avatar" className={style.avatar} />
+        </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
