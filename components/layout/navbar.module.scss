@@ -115,6 +115,8 @@
   gap: 64px;
   position: absolute;
   z-index: 0;
+  display: flex;
+  flex-direction: column;
 
   &.visible {
     height: 100vh;
