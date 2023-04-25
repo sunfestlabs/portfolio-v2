@@ -20,7 +20,12 @@ export default function Home(): JSX.Element {
         <title>Chris Nivera | Software Engineer</title>
         <meta
           name="description"
-          content="I'm an engineer building innovative web experiences."
+          content="Chris Nivera is an engineer who passionately builds innovative web experiences."
+        />
+        <meta property="og:title" content="Chris Nivera | Software Engineer" />
+        <meta
+          property="og:description"
+          content="Chris Nivera is an engineer who passionately builds innovative web experiences."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
