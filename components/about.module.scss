@@ -51,6 +51,18 @@
       align-self: flex-start;
     }
   }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    list-style: none;
+
+    li::before {
+      content: "\25B8";
+      margin-right: 8px;
+      color: var(--color-cta);
+    }
+  }
 }
 
 .tech {

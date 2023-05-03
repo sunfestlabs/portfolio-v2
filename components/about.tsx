@@ -55,8 +55,13 @@ export function AboutMe(props: AboutMeProps): JSX.Element {
         <Spacer axis="vertical" size={24} />
         <div className={style.about}>
           <VStack className={style.description} gap="24px">
-            <div dangerouslySetInnerHTML={{ __html: content.body.html }} />
-            <Technologies />
+            {/* bio paragraphs */}
+            <VStack
+              gap="24px"
+              dangerouslySetInnerHTML={{ __html: content.body.html }}
+            />
+            {/* tech stack list */}
+            <Technologies technologies={content.technologies} />
           </VStack>
           <Image src={avatar} alt="animated avatar" className={style.avatar} />
         </div>
@@ -65,15 +70,19 @@ export function AboutMe(props: AboutMeProps): JSX.Element {
   );
 }
 
-function Technologies(): JSX.Element {
+interface TechnologiesProps {
+  technologies: string[];
+}
+
+function Technologies(props: TechnologiesProps): JSX.Element {
+  const { technologies } = props;
   return (
     <div className={cx(style.tech, robotoMono.className)}>
-      <div className={style.tool}>JavaScript (ES6+)</div>
-      <div className={style.tool}>TypeScript</div>
-      <div className={style.tool}>React</div>
-      <div className={style.tool}>Next.js</div>
-      <div className={style.tool}>Golang</div>
-      <div className={style.tool}>GraphQL</div>
+      {technologies.map((tech, i) => (
+        <div key={i} className={style.tool}>
+          {tech}
+        </div>
+      ))}
     </div>
   );
 }
