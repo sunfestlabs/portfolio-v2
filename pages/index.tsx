@@ -1,6 +1,7 @@
 import { AboutMe } from "@/components/about";
 import {
   AboutMeContent,
+  ContactContent,
   ProjectContent,
   WorkContent,
 } from "@/.contentlayer/generated";
@@ -13,6 +14,7 @@ import { Socials } from "@/components/layout/socials";
 import { WorkHistory } from "@/components/work";
 import {
   allAboutMeContents,
+  allContactContents,
   allProjectContents,
   allWorkContents,
 } from "@/.contentlayer/generated";
@@ -27,10 +29,11 @@ interface HomepageProps {
   aboutMe: AboutMeContent;
   work: WorkContent[];
   projects: ProjectContent[];
+  contact: ContactContent;
 }
 
 export default function Home(props: HomepageProps): JSX.Element {
-  const { aboutMe, work, projects } = props;
+  const { aboutMe, work, projects, contact } = props;
   return (
     <>
       <Head>
@@ -58,7 +61,7 @@ export default function Home(props: HomepageProps): JSX.Element {
         <Spacer axis="vertical" size={192} />
         <Projects content={projects} />
         <Spacer axis="vertical" size={192} />
-        <ContactMe />
+        <ContactMe content={contact} />
         <Spacer axis="vertical" size={64} />
         <Socials />
       </main>
@@ -72,6 +75,7 @@ export async function getStaticProps(): Promise<{ props: HomepageProps }> {
       aboutMe: allAboutMeContents[0],
       work: allWorkContents,
       projects: allProjectContents,
+      contact: allContactContents[0],
     },
   };
 }
