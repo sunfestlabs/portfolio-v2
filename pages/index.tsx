@@ -1,5 +1,9 @@
 import { AboutMe } from "@/components/about";
-import { AboutMeContent, WorkContent } from "@/.contentlayer/generated";
+import {
+  AboutMeContent,
+  ProjectContent,
+  WorkContent,
+} from "@/.contentlayer/generated";
 import { ContactMe } from "@/components/contact";
 import { Hero } from "@/components/hero";
 import { Inter } from "next/font/google";
@@ -7,7 +11,11 @@ import { Navbar } from "@/components/layout/navbar";
 import { Projects } from "@/components/projects";
 import { Socials } from "@/components/layout/socials";
 import { WorkHistory } from "@/components/work";
-import { allAboutMeContents, allWorkContents } from "@/.contentlayer/generated";
+import {
+  allAboutMeContents,
+  allProjectContents,
+  allWorkContents,
+} from "@/.contentlayer/generated";
 import Head from "next/head";
 import Spacer from "@/components/design-system/spacer";
 import cx from "classnames";
@@ -17,11 +25,12 @@ const inter = Inter({ subsets: ["latin"] });
 
 interface HomepageProps {
   aboutMe: AboutMeContent;
-  workContents: WorkContent[];
+  work: WorkContent[];
+  projects: ProjectContent[];
 }
 
 export default function Home(props: HomepageProps): JSX.Element {
-  const { aboutMe, workContents } = props;
+  const { aboutMe, work, projects } = props;
   return (
     <>
       <Head>
@@ -45,9 +54,9 @@ export default function Home(props: HomepageProps): JSX.Element {
         <Spacer axis="vertical" size={64} />
         <AboutMe content={aboutMe} />
         <Spacer axis="vertical" size={192} />
-        <WorkHistory content={workContents} />
+        <WorkHistory content={work} />
         <Spacer axis="vertical" size={192} />
-        <Projects />
+        <Projects content={projects} />
         <Spacer axis="vertical" size={192} />
         <ContactMe />
         <Spacer axis="vertical" size={64} />
@@ -61,7 +70,8 @@ export async function getStaticProps(): Promise<{ props: HomepageProps }> {
   return {
     props: {
       aboutMe: allAboutMeContents[0],
-      workContents: allWorkContents,
+      work: allWorkContents,
+      projects: allProjectContents,
     },
   };
 }

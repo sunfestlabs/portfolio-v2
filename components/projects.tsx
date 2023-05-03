@@ -2,6 +2,7 @@ import { Bitter, Roboto_Mono } from "next/font/google";
 import { Button } from "./design-system/button";
 import { Divider } from "./design-system/divider";
 import { HStack, VStack } from "./design-system/stack";
+import { ProjectContent } from "@/.contentlayer/generated";
 import { SectionTitle } from "./design-system/section-title";
 import { motion } from "framer-motion";
 import { useAnimateOnViewOnce } from "./design-system/animations";
@@ -9,29 +10,35 @@ import { useRef } from "react";
 import Image from "next/image";
 import Spacer from "./design-system/spacer";
 import cx from "classnames";
-import nlpExtensionData from "@/content/projects/nlp-twitch-plugin.json";
-import stopwatchData from "@/content/projects/stopwatch.json";
-import strokeData from "@/content/projects/dl-mechanical-thrombectomy.json";
 import style from "./projects.module.scss";
 
 const bitter = Bitter({ subsets: ["latin"] });
 const robotoMono = Roboto_Mono({ subsets: ["latin"] });
 
-// Schema typing the JSON data that we store project info as.
-interface ProjectData {
-  name: string;
-  snippet: string;
-  url: string;
-  thumbnail: string;
-  technologies: string[];
+// Enum that maps to the project name in the .contentlayer folder.
+enum ProjectID {
+  Stopwatch = "Stopwatch",
+  NLPTwitchPlugin = "AI Twitch Chat Filter",
+  MLStroke = "A Sixth Sense for Stroke",
 }
 
-export function Projects(): JSX.Element {
-  const stopwatch = stopwatchData as ProjectData;
-  const nlpExtension = nlpExtensionData as ProjectData;
-  const stroke = strokeData as ProjectData;
+interface ProjectsProps {
+  content: ProjectContent[];
+}
+
+export function Projects(props: ProjectsProps): JSX.Element {
+  const { content } = props;
   const titleRef = useRef<HTMLDivElement>(null);
   const animationProps = useAnimateOnViewOnce({ ref: titleRef });
+  const stopwatch =
+    content.find((project) => project.name === ProjectID.Stopwatch) ??
+    content[0];
+  const nlpExtension =
+    content.find((project) => project.name === ProjectID.NLPTwitchPlugin) ??
+    content[0];
+  const stroke =
+    content.find((project) => project.name === ProjectID.MLStroke) ??
+    content[0];
 
   return (
     <div className={style.projectsContainer} id="projects">
@@ -50,7 +57,7 @@ export function Projects(): JSX.Element {
   );
 }
 
-function Project(props: { project: ProjectData }): JSX.Element {
+function Project(props: { project: ProjectContent }): JSX.Element {
   const { project } = props;
   const ref = useRef<HTMLDivElement>(null);
   const animationProps = useAnimateOnViewOnce({ ref });
