@@ -1,5 +1,5 @@
 import { AboutMe } from "@/components/about";
-import { AboutMeContent } from "@/.contentlayer/generated";
+import { AboutMeContent, WorkContent } from "@/.contentlayer/generated";
 import { ContactMe } from "@/components/contact";
 import { Hero } from "@/components/hero";
 import { Inter } from "next/font/google";
@@ -7,7 +7,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Projects } from "@/components/projects";
 import { Socials } from "@/components/layout/socials";
 import { WorkHistory } from "@/components/work";
-import { allAboutMeContents } from "@/.contentlayer/generated";
+import { allAboutMeContents, allWorkContents } from "@/.contentlayer/generated";
 import Head from "next/head";
 import Spacer from "@/components/design-system/spacer";
 import cx from "classnames";
@@ -17,10 +17,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 interface HomepageProps {
   aboutMe: AboutMeContent;
+  workContents: WorkContent[];
 }
 
 export default function Home(props: HomepageProps): JSX.Element {
-  const { aboutMe } = props;
+  const { aboutMe, workContents } = props;
   return (
     <>
       <Head>
@@ -44,7 +45,7 @@ export default function Home(props: HomepageProps): JSX.Element {
         <Spacer axis="vertical" size={64} />
         <AboutMe content={aboutMe} />
         <Spacer axis="vertical" size={192} />
-        <WorkHistory />
+        <WorkHistory content={workContents} />
         <Spacer axis="vertical" size={192} />
         <Projects />
         <Spacer axis="vertical" size={192} />
@@ -60,6 +61,7 @@ export async function getStaticProps(): Promise<{ props: HomepageProps }> {
   return {
     props: {
       aboutMe: allAboutMeContents[0],
+      workContents: allWorkContents,
     },
   };
 }

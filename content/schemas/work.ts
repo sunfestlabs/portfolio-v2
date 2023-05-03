@@ -14,7 +14,7 @@ export const WorkSchema: DocumentType = defineDocumentType(() => ({
     },
     endDate: {
       type: "string",
-      required: false,
+      required: true,
     },
     role: {
       type: "string",
@@ -25,7 +25,7 @@ export const WorkSchema: DocumentType = defineDocumentType(() => ({
       of: {
         type: "string",
       },
-      required: false,
+      required: true,
     },
   },
 }));
