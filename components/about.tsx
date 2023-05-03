@@ -1,3 +1,4 @@
+import { AboutMeContent } from "@/.contentlayer/generated";
 import { Divider } from "./design-system/divider";
 import { Roboto_Mono } from "next/font/google";
 import { ScrollAffordance } from "./scroll";
@@ -14,7 +15,12 @@ import style from "./about.module.scss";
 
 const robotoMono = Roboto_Mono({ subsets: ["latin"] });
 
-export function AboutMe(): JSX.Element {
+interface AboutMeProps {
+  content: AboutMeContent;
+}
+
+export function AboutMe(props: AboutMeProps): JSX.Element {
+  const { content } = props;
   const containerRef = useRef<HTMLDivElement>(null);
   const animationProps = useAnimateOnViewOnce({ ref: containerRef });
 
@@ -49,23 +55,7 @@ export function AboutMe(): JSX.Element {
         <Spacer axis="vertical" size={24} />
         <div className={style.about}>
           <VStack className={style.description} gap="24px">
-            <p>
-              Hi! I&apos;m Chris Nivera, a software engineer with a passion for
-              making approachable and effective user interfaces. I first got
-              interested in computer science thanks to my love for gaming, much
-              to my parents&apos; initial chagrin. Nevertheless, the countless
-              hours I&apos;ve spent glued to all sorts of games fuel my desire
-              to build memorable experiences on the web.
-            </p>
-            <p>
-              Since then, I&apos;ve had the opportunity to craft some awesome
-              products at some amazing organizations, including Medinas (a
-              healthcare startup) and Evil Geniuses (an esports organization).
-              Currently, I&apos;m a full stack engineer at Neeva, where I&apos;m
-              excited to push the boundaries of what it means to be a search
-              engine.
-            </p>
-            <p>Recently, I&apos;ve been building with the following tools:</p>
+            <div dangerouslySetInnerHTML={{ __html: content.body.html }} />
             <Technologies />
           </VStack>
           <Image src={avatar} alt="animated avatar" className={style.avatar} />

@@ -1,4 +1,5 @@
 import { AboutMe } from "@/components/about";
+import { AboutMeContent } from "@/.contentlayer/generated";
 import { ContactMe } from "@/components/contact";
 import { Hero } from "@/components/hero";
 import { Inter } from "next/font/google";
@@ -6,6 +7,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Projects } from "@/components/projects";
 import { Socials } from "@/components/layout/socials";
 import { WorkHistory } from "@/components/work";
+import { allAboutMeContents } from "@/.contentlayer/generated";
 import Head from "next/head";
 import Spacer from "@/components/design-system/spacer";
 import cx from "classnames";
@@ -13,7 +15,12 @@ import style from "@/styles/home.module.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home(): JSX.Element {
+interface HomepageProps {
+  aboutMe: AboutMeContent;
+}
+
+export default function Home(props: HomepageProps): JSX.Element {
+  const { aboutMe } = props;
   return (
     <>
       <Head>
@@ -35,7 +42,7 @@ export default function Home(): JSX.Element {
         <Spacer axis="vertical" size={64} />
         <Hero />
         <Spacer axis="vertical" size={64} />
-        <AboutMe />
+        <AboutMe content={aboutMe} />
         <Spacer axis="vertical" size={192} />
         <WorkHistory />
         <Spacer axis="vertical" size={192} />
@@ -47,4 +54,12 @@ export default function Home(): JSX.Element {
       </main>
     </>
   );
+}
+
+export async function getStaticProps(): Promise<{ props: HomepageProps }> {
+  return {
+    props: {
+      aboutMe: allAboutMeContents[0],
+    },
+  };
 }
