@@ -34,7 +34,7 @@ export function ContactMe(props: ContactProps): JSX.Element {
           dangerouslySetInnerHTML={{ __html: content.body.html }}
         ></div>
         <Spacer axis="vertical" size={36} />
-        <a href={"mailto:christopher.nivera@gmail.com"} className={style.cta}>
+        <a href={SocialLinks.Email} className={style.cta}>
           <Button className={style.button}>Connect With Me</Button>
         </a>
         <Spacer axis="vertical" size={36} />
