@@ -1,35 +1,36 @@
 ## chrisnivera.com - v2
 
-This is the second iteration of my personal portfolio, built using React + Next.js. Credit to [Brittany Chiang](https://brittanychiang.com/) and [Robb Owen](https://robbowen.digital/) for a lot of inspiration!
+This is the second iteration of my personal portfolio, built using React + Typescript + Next.js + Contentlayer. Credit to [Brittany Chiang](https://brittanychiang.com/) and [Robb Owen](https://robbowen.digital/) for a lot of inspiration!
 
 Previous iteration: [v1](https://github.com/sunfestlabs/chrisnivera.com)
 
-## 
 
+![Vercel](https://vercelbadge.vercel.app/api/sunfestlabs/portfolio-v2)
+ 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-First, run the development server:
+First, install pnpm:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+npm install -g pnpm
+```
+
+Then, install all dependencies:
+```bash
+pnpm i
+```
+
+Finally, start the development server. For some reason this has been hit-or-miss with me on Apple Silicon chips, YMMV.
+```bash
 pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load all page fonts.
 
 ## Learn More
 
