@@ -1,6 +1,6 @@
 ## chrisnivera.com - v2
 
-This is the second iteration of my personal portfolio, built using React + Typescript + Next.js + Contentlayer. Credit to [Brittany Chiang](https://brittanychiang.com/) and [Robb Owen](https://robbowen.digital/) for a lot of inspiration!
+This is the second iteration of [chrisnivera.com](https://chrisnivera.com) - my personal portfolio - built using React + Typescript + Next.js + Contentlayer. Credit to [Brittany Chiang](https://brittanychiang.com/) and [Robb Owen](https://robbowen.digital/) for a lot of inspiration!
 
 Previous iteration: [v1](https://github.com/sunfestlabs/chrisnivera.com)
 
