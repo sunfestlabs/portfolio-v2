@@ -1,4 +1,10 @@
 import { AboutMe } from "@/components/about";
+import {
+  AboutMeContent,
+  ContactContent,
+  ProjectContent,
+  WorkContent,
+} from "@/.contentlayer/generated";
 import { ContactMe } from "@/components/contact";
 import { Hero } from "@/components/hero";
 import { Inter } from "next/font/google";
@@ -6,6 +12,12 @@ import { Navbar } from "@/components/layout/navbar";
 import { Projects } from "@/components/projects";
 import { Socials } from "@/components/layout/socials";
 import { WorkHistory } from "@/components/work";
+import {
+  allAboutMeContents,
+  allContactContents,
+  allProjectContents,
+  allWorkContents,
+} from "@/.contentlayer/generated";
 import Head from "next/head";
 import Spacer from "@/components/design-system/spacer";
 import cx from "classnames";
@@ -13,7 +25,15 @@ import style from "@/styles/home.module.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home(): JSX.Element {
+interface HomepageProps {
+  aboutMe: AboutMeContent;
+  work: WorkContent[];
+  projects: ProjectContent[];
+  contact: ContactContent;
+}
+
+export default function Home(props: HomepageProps): JSX.Element {
+  const { aboutMe, work, projects, contact } = props;
   return (
     <>
       <Head>
@@ -35,16 +55,27 @@ export default function Home(): JSX.Element {
         <Spacer axis="vertical" size={64} />
         <Hero />
         <Spacer axis="vertical" size={64} />
-        <AboutMe />
+        <AboutMe content={aboutMe} />
         <Spacer axis="vertical" size={192} />
-        <WorkHistory />
+        <WorkHistory content={work} />
         <Spacer axis="vertical" size={192} />
-        <Projects />
+        <Projects content={projects} />
         <Spacer axis="vertical" size={192} />
-        <ContactMe />
+        <ContactMe content={contact} />
         <Spacer axis="vertical" size={64} />
         <Socials />
       </main>
     </>
   );
+}
+
+export async function getStaticProps(): Promise<{ props: HomepageProps }> {
+  return {
+    props: {
+      aboutMe: allAboutMeContents[0],
+      work: allWorkContents,
+      projects: allProjectContents,
+      contact: allContactContents[0],
+    },
+  };
 }

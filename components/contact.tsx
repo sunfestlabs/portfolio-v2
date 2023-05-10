@@ -1,5 +1,6 @@
 import { Bitter } from "next/font/google";
 import { Button } from "./design-system/button";
+import { ContactContent } from "@/.contentlayer/generated";
 import { HStack, VStack } from "./design-system/stack";
 import { SocialLinks } from "@/content/socials";
 import { motion } from "framer-motion";
@@ -15,24 +16,25 @@ import twitterIcon from "@/public/twitter.svg";
 
 const bitter = Bitter({ subsets: ["latin"] });
 
-export function ContactMe(): JSX.Element {
+interface ContactProps {
+  content: ContactContent;
+}
+
+export function ContactMe(props: ContactProps): JSX.Element {
+  const { content } = props;
   const ref = useRef<HTMLDivElement>(null);
   const animationProps = useAnimateOnViewOnce({ ref });
   return (
     <motion.div {...animationProps} ref={ref}>
       <VStack className={style.chatContainer} id="contact">
-        <div className={cx(style.title, bitter.className)}>
-          Let&apos;s chat!
-        </div>
+        <div className={cx(style.title, bitter.className)}>{content.title}</div>
         <Spacer axis="vertical" size={12} />
-        <div className={style.snippet}>
-          Although I&apos;m not actively seeking new opportunities at the
-          moment, I&apos;m always happy to hear from anyone who&apos;s
-          interested in my work. If you have a question, project idea, or just
-          want to say hi, feel free to drop me a line!
-        </div>
+        <div
+          className={style.snippet}
+          dangerouslySetInnerHTML={{ __html: content.body.html }}
+        ></div>
         <Spacer axis="vertical" size={36} />
-        <a href={"mailto:christopher.nivera@gmail.com"} className={style.cta}>
+        <a href={SocialLinks.Email} className={style.cta}>
           <Button className={style.button}>Connect With Me</Button>
         </a>
         <Spacer axis="vertical" size={36} />

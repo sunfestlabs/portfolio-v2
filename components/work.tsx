@@ -3,13 +3,11 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import { Roboto_Mono } from "next/font/google";
 import { SectionTitle } from "./design-system/section-title";
 import { VStack } from "./design-system/stack";
+import { WorkContent } from "@/.contentlayer/generated";
 import { motion } from "framer-motion";
 import { useAnimateOnViewOnce } from "./design-system/animations";
 import Spacer from "./design-system/spacer";
 import cx from "classnames";
-import egData from "@/content/work/evil-geniuses.json";
-import medinasData from "@/content/work/medinas.json";
-import neevaData from "@/content/work/neeva.json";
 import style from "./work.module.scss";
 
 export enum Company {
@@ -24,27 +22,15 @@ const robotoMono = Roboto_Mono({ subsets: ["latin"] });
 // TODO: there's probably a better way to track this?
 const companies = [Company.Neeva, Company.EG, Company.Medinas];
 
-// Schema describing the JSON fields for each company.
-// These should map 1:1 to the fields in each company's JSON file.
-export interface WorkSummary {
-  company: string;
-  startDate: string;
-  endDate: string;
-  role: string;
-  summary: string[];
+interface WorkHistoryProps {
+  content: WorkContent[];
 }
 
-const defaultWorkSummary: WorkSummary = {
-  company: "",
-  startDate: "",
-  endDate: "",
-  role: "",
-  summary: [],
-};
-
-export function WorkHistory(): JSX.Element {
+export function WorkHistory(props: WorkHistoryProps): JSX.Element {
+  const { content } = props;
   const [activeCompany, setActiveCompany] = useState<Company>(Company.Neeva);
-  const activeCompanySummary = mapActiveCompanyToDescription(activeCompany);
+  const activeCompanySummary =
+    content.find((work) => work.company === activeCompany) ?? content[0];
   const ref = useRef<HTMLDivElement>(null);
   const animationProps = useAnimateOnViewOnce({ ref });
 
@@ -106,7 +92,7 @@ function WorkSelector(props: InnerProps): JSX.Element {
 }
 
 interface WorkDescriptionProps {
-  workSummary: WorkSummary;
+  workSummary: WorkContent;
 }
 
 // Component to render my responsibilities at a given company.
@@ -159,19 +145,4 @@ function Highlight(props: HighlightProps): JSX.Element {
   }, [activeCompanyIdx]);
 
   return <div className={style.highlight} />;
-}
-
-// Given the currently selected company, return the corresponding work summary.
-// Eventually we'll be using a CMS for this stuff, so hopefully we won't need such convenience functions.
-function mapActiveCompanyToDescription(company: Company): WorkSummary {
-  switch (company) {
-    case Company.Medinas:
-      return medinasData as WorkSummary;
-    case Company.EG:
-      return egData as WorkSummary;
-    case Company.Neeva:
-      return neevaData as WorkSummary;
-    default:
-      return defaultWorkSummary;
-  }
 }
