@@ -60,8 +60,8 @@ export function Hero(): JSX.Element {
           I craft user experiences.
         </motion.div>
         <motion.div variants={childVariants} className={style.description}>
-          I&apos;m a software engineer currently building the next evolution of
-          search at Neeva.
+          I&apos;m a software engineer revolutionizing the data cloud at
+          Snowflake.
         </motion.div>
       </motion.div>
       <motion.div variants={imageVariants} initial="hidden" animate="visible">
